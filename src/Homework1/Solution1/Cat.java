@@ -1,4 +1,4 @@
-package Solution1;
+package Homework1.Solution1;
 
 public class Cat {
     private int age;
@@ -64,7 +64,7 @@ public class Cat {
 
     @Override
     public String toString() {
-        return "Solution1.Cat{" +
+        return "Homework1.Solution1.Cat{" +
                 "age=" + age +
                 ", name='" + name + '\'' +
                 ", color='" + color + '\'' +

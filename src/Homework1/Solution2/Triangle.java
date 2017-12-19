@@ -1,4 +1,4 @@
-package Solution2;
+package Homework1.Solution2;
 
 public class Triangle {
     private double a;

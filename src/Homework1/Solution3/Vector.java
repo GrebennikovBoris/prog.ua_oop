@@ -1,4 +1,4 @@
-package Solution3;
+package Homework1.Solution3;
 
 public class Vector {
     private int x;

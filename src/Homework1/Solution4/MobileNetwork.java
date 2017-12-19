@@ -1,4 +1,4 @@
-package Solution4;
+package Homework1.Solution4;
 
 import java.util.HashSet;
 import java.util.Set;
