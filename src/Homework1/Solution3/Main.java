@@ -2,9 +2,18 @@ package Homework1.Solution3;
 
 public class Main {
     public static void main(String[] args) {
-        Vector vector1 = new Vector(4, 6, 3);
-        Vector vector2 = new Vector(1, 4, 3);
-        Vector vector3 = new Vector(2, 6, 4);
+        Vector vector1 = new Vector();
+        vector1.setX(4);
+        vector1.setY(6);
+        vector1.setZ(3);
+        Vector vector2 = new Vector();
+        vector2.setX(1);
+        vector2.setY(4);
+        vector2.setZ(3);
+        Vector vector3 = new Vector();
+        vector3.setX(2);
+        vector3.setY(6);
+        vector3.setZ(4);
 
         System.out.println("Vector1 = " + vector1);
         System.out.println("Vector2 = " + vector2);

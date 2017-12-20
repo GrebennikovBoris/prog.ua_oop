@@ -7,13 +7,6 @@ public class Cat {
     private double weight;
     private boolean isHungry;
 
-    public Cat(int age, String name, String color, double weight) {
-        this.age = age;
-        this.name = name;
-        this.color = color;
-        this.weight = weight;
-    }
-
     public void state() {
         if (isHungry) {
             System.out.println(name + " : " + "Meooooowwwww");

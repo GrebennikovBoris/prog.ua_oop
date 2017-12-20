@@ -10,6 +10,14 @@ public class MobileNetwork {
         this.mobileNumbersBase = new HashSet<>();
     }
 
+    public Set<String> getMobileNumbersBase() {
+        return mobileNumbersBase;
+    }
+
+    public void setMobileNumbersBase(Set<String> mobileNumbersBase) {
+        this.mobileNumbersBase = mobileNumbersBase;
+    }
+
     public boolean isRegistry(String number) {
         for (String string : mobileNumbersBase) {
             if (string.equals(number)) {

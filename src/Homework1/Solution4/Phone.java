@@ -5,6 +5,22 @@ public class Phone {
     private String phoneNumber;
     private String model;
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
     public Phone(String phoneNumber, String model) {
         this.phoneNumber = phoneNumber;
         this.model = model;
