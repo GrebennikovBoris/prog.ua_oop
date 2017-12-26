@@ -68,6 +68,51 @@ public class Group {
         }
     }
 
+    private void sortByLastName() {
+        Arrays.sort(students, new Comparator<Student>() {
+            @Override
+            public int compare(Student s1, Student s2) {
+                if (s1 == null && s2 == null) return 0;
+                if (s1 == null) return -1;
+                if (s2 == null) return 1;
+                return s1.getLastName().compareToIgnoreCase(s2.getLastName());
+            }
+        });
+    }
+
+    private void sortByFirstName() {
+        Arrays.sort(students, new Comparator<Student>() {
+            @Override
+            public int compare(Student s1, Student s2) {
+                if (s1 == null && s2 == null) return 0;
+                if (s1 == null) return -1;
+                if (s2 == null) return 1;
+                return s1.getFirstName().compareToIgnoreCase(s2.getFirstName());
+            }
+        });
+    }
+
+    private void sortByAge() {
+        Arrays.sort(students, new Comparator<Student>() {
+            @Override
+            public int compare(Student s1, Student s2) {
+                if (s1 == null && s2 == null) return 0;
+                if (s1 == null) return -1;
+                if (s2 == null) return 1;
+                return s1.getAge() - s2.getAge();
+            }
+        });
+    }
+
+    private void sortById() {
+        Arrays.sort(students, new Comparator<Student>() {
+            @Override
+            public int compare(Student s1, Student s2) {
+                return s1.getId() - s2.getId();
+            }
+        });
+    }
+
     private void getCompareGroup() {
         System.out.println("What kind of compare this group do you want ?");
         System.out.println("1 - by last name");
@@ -79,46 +124,16 @@ public class Group {
             int number = Integer.parseInt(reader.readLine());
             switch (number) {
                 case 1:
-                    Arrays.sort(students, new Comparator<Student>() {
-                        @Override
-                        public int compare(Student s1, Student s2) {
-                            if (s1 == null && s2 == null) return 0;
-                            if (s1 == null) return -1;
-                            if (s2 == null) return 1;
-                            return s1.getLastName().compareToIgnoreCase(s2.getLastName());
-                        }
-                    });
+                    sortByLastName();
                     break;
                 case 2:
-                    Arrays.sort(students, new Comparator<Student>() {
-                        @Override
-                        public int compare(Student s1, Student s2) {
-                            if (s1 == null && s2 == null) return 0;
-                            if (s1 == null) return -1;
-                            if (s2 == null) return 1;
-                            return s1.getFirstName().compareToIgnoreCase(s2.getFirstName());
-                        }
-                    });
+                    sortByFirstName();
                     break;
                 case 3:
-                    Arrays.sort(students, new Comparator<Student>() {
-
-                        @Override
-                        public int compare(Student s1, Student s2) {
-                            if (s1 == null && s2 == null) return 0;
-                            if (s1 == null) return -1;
-                            if (s2 == null) return 1;
-                            return s1.getAge() - s2.getAge();
-                        }
-                    });
+                    sortByAge();
                     break;
                 case 4:
-                    Arrays.sort(students, new Comparator<Student>() {
-                        @Override
-                        public int compare(Student s1, Student s2) {
-                            return s1.getId() - s2.getId();
-                        }
-                    });
+                    sortById();
                     break;
 
             }
