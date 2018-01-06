@@ -23,6 +23,18 @@ public class Student extends Human {
         return id;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Student)) return false;
+        Student student = (Student) o;
+        return firstName.equalsIgnoreCase(student.firstName) &&
+                lastName.equalsIgnoreCase(student.lastName) &&
+                sex == student.sex &&
+                age == student.age;
+    }
+
+
     public void setId(int id) {
         this.id = id;
     }

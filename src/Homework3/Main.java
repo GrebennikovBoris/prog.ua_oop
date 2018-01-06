@@ -1,5 +1,7 @@
 package Homework3;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
         Student student = new Student("Boris", "Grebennikov", true, 29);
@@ -30,6 +32,8 @@ public class Main {
         group.deleteStudent(student6);
         group.deleteStudent(student2);
         group.deleteStudent(student);
+        group.addStudent();
+        System.out.println(Arrays.toString(group.getStudentsArray()));
         System.out.println(group.toString());
     }
 }

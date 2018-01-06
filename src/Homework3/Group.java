@@ -3,24 +3,46 @@ package Homework3;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.*;
 
-public class Group {
-    private Student[] students;
+public class Group implements Voenkom {
+    private List<Student> students;
     private int MAX_SIZE = 10;
     private String groupName;
     private int count;
 
     public Group(String groupName) {
         this.groupName = groupName;
-        students = new Student[MAX_SIZE];
-
+        students = new ArrayList<>(MAX_SIZE);
     }
 
     public Group() {
         groupName = "";
-        students = new Student[MAX_SIZE];
+        students = new ArrayList<>(MAX_SIZE);
+    }
+
+    public void addStudent() {
+        if (students.size() < MAX_SIZE) {
+            try {
+               BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+                System.out.println("First name :");
+                String firstName = reader.readLine();
+                System.out.println("Last name :");
+                String lastName = reader.readLine();
+                System.out.println("Sex :");
+                String sex = reader.readLine();
+                System.out.println("Age:");
+                String age = reader.readLine();
+                boolean s;
+                s = sex.equalsIgnoreCase("Male");
+                students.add(new Student(firstName, lastName, s, Integer.parseInt(age)));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Too many students");
+            throw new GroupFullException();
+        }
     }
 
     public void addStudent(Student student) {
@@ -28,7 +50,7 @@ public class Group {
             throw new GroupFullException();
         }
         if (student != null) {
-            students[count] = student;
+            students.add(student);
             student.setId(count);
             count++;
             System.out.println("Student add");
@@ -46,7 +68,7 @@ public class Group {
 
     public void deleteStudent(Student student) {
         if (student != null) {
-            students[student.getId()] = null;
+            students.remove(student);
             System.out.println("Student delete");
         }
     }
@@ -69,7 +91,7 @@ public class Group {
     }
 
     private void sortByLastName() {
-        Arrays.sort(students, new Comparator<Student>() {
+        students.sort(new Comparator<Student>() {
             @Override
             public int compare(Student s1, Student s2) {
                 if (s1 == null && s2 == null) return 0;
@@ -81,7 +103,7 @@ public class Group {
     }
 
     private void sortByFirstName() {
-        Arrays.sort(students, new Comparator<Student>() {
+        students.sort(new Comparator<Student>() {
             @Override
             public int compare(Student s1, Student s2) {
                 if (s1 == null && s2 == null) return 0;
@@ -93,7 +115,7 @@ public class Group {
     }
 
     private void sortByAge() {
-        Arrays.sort(students, new Comparator<Student>() {
+        students.sort(new Comparator<Student>() {
             @Override
             public int compare(Student s1, Student s2) {
                 if (s1 == null && s2 == null) return 0;
@@ -105,7 +127,7 @@ public class Group {
     }
 
     private void sortById() {
-        Arrays.sort(students, new Comparator<Student>() {
+        students.sort(new Comparator<Student>() {
             @Override
             public int compare(Student s1, Student s2) {
                 return s1.getId() - s2.getId();
@@ -163,5 +185,10 @@ public class Group {
         return "Group " + groupName + "{" +
                 "students=" + System.lineSeparator() + s +
                 '}';
+    }
+
+    @Override
+    public Student[] getStudentsArray() {
+        return students.stream().filter(s -> s.isMale() && s.age > 18).toArray(Student[]::new);
     }
 }
