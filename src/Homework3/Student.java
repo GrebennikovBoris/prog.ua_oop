@@ -1,6 +1,6 @@
 package Homework3;
 
-public class Student extends Human {
+public class Student extends Human  {
     private int id;
 
     public Student(String firstName, String lastName, boolean sex, int age) {

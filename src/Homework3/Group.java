@@ -3,9 +3,10 @@ package Homework3;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.util.*;
 
-public class Group implements Voenkom {
+public class Group implements Voenkom,Serializable {
     private List<Student> students;
     private int MAX_SIZE = 10;
     private String groupName;

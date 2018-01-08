@@ -1,5 +1,6 @@
 package Homework3;
 
+import java.io.*;
 import java.util.Arrays;
 
 public class Main {
@@ -25,6 +26,14 @@ public class Main {
         group.addStudent(student6);
         group.addStudent(student7);
         group.addStudent(student8);
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("C:\\obj.dat"));
+             ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("C:\\obj.dat"))) {
+            objectOutputStream.writeObject(group);
+            group = null;
+            group = (Group) objectInputStream.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         group.addStudent(student9);
 //        group.addStudent(student10);
         group.searchStudentsByLastName("Kovalev");
@@ -34,6 +43,7 @@ public class Main {
         group.deleteStudent(student);
         group.addStudent();
         System.out.println(Arrays.toString(group.getStudentsArray()));
+
         System.out.println(group.toString());
     }
 }
