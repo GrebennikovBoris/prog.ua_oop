@@ -1,8 +1,8 @@
 package Homework3;
 
-import java.io.Serializable;
+import java.io.*;
 
-public class Human implements Serializable {
+public class Human implements Externalizable {
 
     protected String firstName;
     protected String lastName;
@@ -63,5 +63,22 @@ public class Human implements Serializable {
                 ", sex=" + sex +
                 ", age=" + age +
                 '}';
+    }
+
+    @Override
+    public void writeExternal(ObjectOutput out) throws IOException {
+        out.writeUTF(firstName);
+        out.writeUTF(lastName);
+        out.writeBoolean(sex);
+        out.writeInt(age);
+        out.flush();
+    }
+
+    @Override
+    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+        firstName = in.readUTF();
+        lastName = in.readUTF();
+        sex = in.readBoolean();
+        age = in.readInt();
     }
 }

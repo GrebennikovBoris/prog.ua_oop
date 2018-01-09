@@ -1,12 +1,9 @@
 package Homework3;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Serializable;
+import java.io.*;
 import java.util.*;
 
-public class Group implements Voenkom,Serializable {
+public class Group implements Voenkom,Externalizable {
     private List<Student> students;
     private int MAX_SIZE = 10;
     private String groupName;
@@ -191,5 +188,23 @@ public class Group implements Voenkom,Serializable {
     @Override
     public Student[] getStudentsArray() {
         return students.stream().filter(s -> s.isMale() && s.age > 18).toArray(Student[]::new);
+    }
+
+    @Override
+    public void writeExternal(ObjectOutput out) throws IOException {
+        out.writeObject(students);
+        out.writeInt(MAX_SIZE);
+        out.writeUTF(groupName);
+        out.writeInt(count);
+        out.flush();
+    }
+
+    @Override
+    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+        students = (List<Student>) in.readObject();
+        MAX_SIZE = in.readInt();
+        groupName = in.readUTF();
+        count = in.readInt();
+
     }
 }

@@ -1,6 +1,10 @@
 package Homework3;
 
-public class Student extends Human  {
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+
+public class Student extends Human {
     private int id;
 
     public Student(String firstName, String lastName, boolean sex, int age) {
@@ -17,6 +21,9 @@ public class Student extends Human  {
         this.lastName = lastName;
         this.sex = sex;
         this.age = age;
+    }
+
+    public Student() {
     }
 
     public int getId() {
@@ -39,6 +46,18 @@ public class Student extends Human  {
         this.id = id;
     }
 
+    @Override
+    public void writeExternal(ObjectOutput out) throws IOException {
+        super.writeExternal(out);
+        out.writeInt(id);
+        out.flush();
+    }
+
+    @Override
+    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+        super.readExternal(in);
+        id = in.readInt();
+    }
 
     @Override
     public String toString() {
