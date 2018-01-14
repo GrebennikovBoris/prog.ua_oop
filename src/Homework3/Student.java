@@ -9,10 +9,10 @@ public class Student extends Human {
 
     public Student(String firstName, String lastName, boolean sex, int age) {
         if (firstName.length() == 0 || lastName.length() == 0) {
-            System.out.println("First name length or last name length is zero ");
+            System.out.println("Factorial name length or last name length is zero ");
         }
         if (firstName == null || lastName == null) {
-            System.out.println("First name or last name is null");
+            System.out.println("Factorial name or last name is null");
         }
         if (age < 0) {
             System.out.println("Age < 0");
