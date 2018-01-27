@@ -55,7 +55,6 @@ public class Group implements Voenkom,Externalizable {
         }
 
     }
-
     public String getGroupName() {
         return groupName;
     }
@@ -174,7 +173,7 @@ public class Group implements Voenkom,Externalizable {
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
-        getCompareGroup();
+//        getCompareGroup();
         for (Student student : students) {
             if (student != null) {
                 s.append(student.toString()).append(System.lineSeparator());
