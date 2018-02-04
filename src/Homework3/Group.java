@@ -23,7 +23,7 @@ public class Group implements Voenkom,Externalizable {
         if (students.size() < MAX_SIZE) {
             try {
                BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-                System.out.println("Factorial name :");
+                System.out.println("First name :");
                 String firstName = reader.readLine();
                 System.out.println("Last name :");
                 String lastName = reader.readLine();
@@ -179,7 +179,7 @@ public class Group implements Voenkom,Externalizable {
                 s.append(student.toString()).append(System.lineSeparator());
             }
         }
-        return "Group " + groupName + "{" +
+        return "StudentsGroup " + groupName + "{" +
                 "students=" + System.lineSeparator() + s +
                 '}';
     }

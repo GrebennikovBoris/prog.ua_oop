@@ -18,6 +18,6 @@ public class BlackList {
 
 
     public boolean isBanned(Object o) {
-        return classes.contains(o);
+        return classes.contains(o.getClass());
     }
 }
