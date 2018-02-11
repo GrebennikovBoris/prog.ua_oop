@@ -23,7 +23,7 @@ public class Group implements Voenkom,Externalizable {
         if (students.size() < MAX_SIZE) {
             try {
                BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-                System.out.println("First name :");
+                System.out.println("Translate name :");
                 String firstName = reader.readLine();
                 System.out.println("Last name :");
                 String lastName = reader.readLine();

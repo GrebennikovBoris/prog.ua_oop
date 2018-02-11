@@ -1,4 +1,4 @@
-package Homework9.WordCounter;
+package Homework10.WordCounter;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -17,30 +17,30 @@ public class WordCounter {
 
     public void readFile() {
         try {
-            List<String> list = allLines(path);
-            for (String s : list) {
-                for (char c : s.toCharArray()) {
-                    if (Character.isAlphabetic(c)) {
-                        if (!map.containsKey(c)) {
-                            map.put(c, 0);
-                        } else {
-                            map.replace(c, map.get(c) + 1);
-                        }
-                    }
+            List<Character> characters = allChars(path);
+            for (Character character : characters) {
+                if (Character.isAlphabetic(character)) {
+                    map.put(character, Collections.frequency(characters, character));
                 }
-                sortAndSout();
             }
+
+            sortAndSout();
         } catch (IOException e1) {
             e1.printStackTrace();
         }
     }
 
-    private List<String> allLines(Path path) throws IOException {
-        return Files.readAllLines(path);
+    private List<Character> allChars(Path path) throws IOException {
+        ArrayList<Character> characters = new ArrayList<>();
+        for (String s : Files.readAllLines(path)) {
+            for (char c : s.toCharArray()) {
+                characters.add(c);
+            }
+        }
+        return characters;
     }
 
     public void sortAndSout() {
         map.entrySet().stream().sorted(Map.Entry.<Character, Integer>comparingByValue().reversed()).forEach(System.out::println);
     }
-
 }
